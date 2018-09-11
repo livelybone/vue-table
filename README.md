@@ -3,6 +3,8 @@
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
 ![mobile supported](https://img.shields.io/badge/mobile-supported-green.svg "mobile supported")
 
+> `pkg.module supported`, which means that you can apply tree-shaking in you project
+
 A vue table component, support width change
 
 ## repository
