@@ -1,5 +1,5 @@
 # @livelybone/vue-table
-![gzip with dependencies: 5.8kb](https://img.shields.io/badge/gzip--with--dependencies-5.8kb-brightgreen.svg "gzip with dependencies: 5.8kb")
+![gzip with dependencies: 5.7kb](https://img.shields.io/badge/gzip--with--dependencies-5.7kb-brightgreen.svg "gzip with dependencies: 5.7kb")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
 ![mobile supported](https://img.shields.io/badge/mobile-supported-green.svg "mobile supported")
 
@@ -69,7 +69,6 @@ const slotsName = [
 /**
  * @key {String} name
  * @key {String} alias
- * @key {Boolean} slot
  * @key {Object} style
  * @key {Object} tdStyle
  * @key {Function} formatter
@@ -78,7 +77,6 @@ const slotsName = [
 const head = {
   name,
   alias,
-  slot,
   style,
   tdStyle,
   formatter,

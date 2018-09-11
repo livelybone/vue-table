@@ -1,5 +1,5 @@
 <template>
-  <table class="vue-table table-base" v-if="valid">
+  <table class="vue-table table-base">
     <thead class="thead" v-if="!noHead">
     <tr class="tr" :style="headTrStyle">
       <th class="th" v-for="(h, i) in heads" :key="i" :style="h.style"
@@ -50,17 +50,6 @@ export default {
   },
   data() {
     return {}
-  },
-  computed: {
-    valid() {
-      let valid = true
-      if (this.heads) {
-        valid = this.heads instanceof Array
-          && this.heads.every(head => head.alias || head.slot)
-      }
-      if (!valid) this.$emit('error', 'TableBase: prop heads is invalid')
-      return valid
-    },
   },
   methods: {},
 }

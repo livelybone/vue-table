@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-table table-extend" v-if="valid" ref="table"
+  <div class="vue-table table-extend" ref="table"
        :style="{width:tableChangedWidth?tableChangedWidth+'px':''}">
     <div class="thead" v-if="!noHead">
       <th-row class="tr" :style="headTrStyle" :widths="widths" :heads="heads"
@@ -73,15 +73,6 @@ export default {
     }
   },
   computed: {
-    valid() {
-      let valid = true
-      if (this.heads) {
-        valid = this.heads instanceof Array
-          && this.heads.every(head => head.alias || head.slot)
-      }
-      if (!valid) this.$emit('error', 'TableBase: prop heads is invalid')
-      return valid
-    },
     widths() {
       if (this.textContentsInvalid()) return []
       const { clientWidth } = this.tableSize
