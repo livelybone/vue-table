@@ -19,14 +19,14 @@ npm i -S @livelybone/vue-table
 ## Register
 ```js
 // import all
-import ModuleName from '@livelybone/vue-table';
+import VueTable from '@livelybone/vue-table';
 
 // Global register
-Vue.component('VueTable', ModuleName);
+Vue.component('VueTable', VueTable);
 
 // Local register
 new Vue({
-  components:{ModuleName}
+  components:{VueTable}
 })
 ```
 
