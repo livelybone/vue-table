@@ -1,6 +1,7 @@
 # @livelybone/vue-table
-![gzip with dependencies: kb](https://img.shields.io/badge/gzip--with--dependencies-kb-brightgreen.svg "gzip with dependencies: kb")
+![gzip with dependencies: 5.8kb](https://img.shields.io/badge/gzip--with--dependencies-5.8kb-brightgreen.svg "gzip with dependencies: 5.8kb")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
+![mobile supported](https://img.shields.io/badge/mobile-supported-green.svg "mobile supported")
 
 A vue table component, support width change
 
@@ -35,18 +36,55 @@ Use in html, see what your can use in [CDN: unpkg](https://unpkg.com/@livelybone
 <script src="https://unpkg.com/@livelybone/vue-table/lib/umd/<--module-->.js"></script>
 ```
 
+## Example
+See: [example](https://github.com/livelybone/vue-table/blob/master/examples/test.html)
+
+## Slots
+```js
+const slotsName = [
+  'th-0', 
+  'th-1', 
+  'th-2', 
+  // ... 'th-{{thIndex}}'
+  'td-0-0', 
+  'td-0-1', 
+  'td-0-2',     
+  // ... 'td-{{trIndex}}-{{tdIndex}}'
+]
+```
+
 ## Props
 
 ### Common
 | Name                      | Type                                      | DefaultValue                                  | Description  |
 | ------------------------- | ----------------------------------------- | --------------------------------------------- | ------------ |
-| `prop`                    | `type`                                    | none                                          | Description |
+| `heads`                   | `Array`                                   | `[]`                                          | Array of head option |
+| `data`                    | `Array`                                   | `[]`                                          | Data list |
+| `headTrStyle`             | `Object`                                  | none                                          |  |
+| `trStyle`                 | `Object`                                  | none                                          |  |
+| `evenTrStyle`             | `Object`                                  | none                                          |  |
+| `noHead`                  | `Boolean`                                 | `false`                                       | Set to true to hide thead |
 
+### TableExtend
+| Name                      | Type                                      | DefaultValue                                  | Description  |
+| ------------------------- | ----------------------------------------- | --------------------------------------------- | ------------ |
+| `scrollbarProps`          | `Object`                                  | `{isMobile: false, maxHeight: '1000vh'}`      | Props of module [@livelybone/vue-scrollbar-live](https://github.com/livelybone/vue-scrollbar-live) |
 
 ## Events
 | Name              | EmittedData           | Description                                       |
 | ----------------- | --------------------- | ------------------------------------------------- |
-| `event`           | `type`                |  |
+| `clickTh`         | `clickData`           |  |
+| `clickTr`         | `clickData`           |  |
+| `clickTd`         | `clickData`           |  |
+
+```js
+const clickData={
+  ev: MouseEvent,
+  th: index,
+  tr: index,
+  td: index,
+}
+```
 
 ## style
 For building style, you can use the css or scss file in lib directory.

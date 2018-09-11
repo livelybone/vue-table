@@ -1,0 +1,146 @@
+$thColor: #666;
+$tdColor: #777;
+$border: #c2ccdc;
+$borderWidth: 1px;
+$baseSize: 10px;
+
+@mixin border-box() {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@function size($val) {
+  @return $val * $baseSize;
+}
+
+$thHeight: size(4);
+$tdHeight: size(3.4);
+$font-size: size(1.4);
+
+.vue-table {
+  width: 100%;
+
+  .tr {
+    border-top: $borderWidth solid $border;
+
+    &:last-child {
+      border-bottom: $borderWidth solid $border;
+    }
+  }
+
+  .th, .td {
+    position: relative;
+    border-left: $borderWidth solid $border;
+    font-size: size(1.4);
+    text-align: center;
+    padding: 0 size(1);
+
+    &:last-child {
+      border-right: $borderWidth solid $border;
+    }
+  }
+
+  .thead {
+
+    .tr {
+      min-height: $thHeight;
+
+      .th {
+        color: $thColor;
+      }
+    }
+  }
+
+  .tbody {
+
+    .tr {
+      min-height: $tdHeight;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      .td {
+        color: $tdColor;
+      }
+    }
+  }
+}
+
+.table-extend {
+
+  /* scrollbar css */
+  .scrollbar-wrap {
+    position: relative;
+    width: 100%;
+    padding: 0 !important;
+    overflow: hidden;
+
+    &:hover .scrollbar {
+      display: block
+    }
+
+    .scrollbar-content {
+      position: relative;
+      width: 100%;
+      height: auto
+    }
+
+    .scrollbar {
+      display: none;
+      position: absolute;
+      right: 4px;
+      width: 4px;
+      border-radius: 2px;
+      background: #eee;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+      cursor: default !important
+    }
+  }
+
+  .tr {
+    @include border-box;
+
+    * {
+      display: inline-block;
+    }
+  }
+
+  .th, .td {
+    @include border-box;
+    position: relative;
+    min-height: $thHeight;
+    line-height: $thHeight;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .column-resize {
+      position: absolute;
+      right: size(-.5);
+      top: 50%;
+      z-index: 1;
+      width: size(1);
+      height: $thHeight;
+      margin: -$thHeight/2 0 0;
+      cursor: col-resize;
+    }
+  }
+
+  .td {
+    min-height: $tdHeight;
+    line-height: $tdHeight;
+
+    * {
+      max-width: 100%;
+    }
+
+    .td-value {
+      min-height: $tdHeight;
+    }
+  }
+}

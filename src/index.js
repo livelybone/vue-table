@@ -1,3 +1,7 @@
-import VueTable from './components/Index.vue'
+import TableBase from './components/TableBase.vue'
+import TableExtend from './components/TableExtend.vue'
 
-export default VueTable
+export {
+  TableBase,
+  TableExtend,
+}

@@ -26,7 +26,7 @@ const conf = entry => Object.assign({}, baseConf, {
   output: entry.formats.map(format => ({
     file: `./lib/${format}/${entry.name}.js`,
     format,
-    name: entry.name === 'index' ? 'VueTable' : `${entry.name}VueTable`,
+    name: entry.name === 'index' ? 'VueTable' : entry.name,
   })),
   external: entry.external ? [''] : [],
   plugins: baseConf.plugins.concat([(entry.needUglify !== false && uglify())]),
