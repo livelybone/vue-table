@@ -4,7 +4,7 @@
           :style="assign(h.tdStyle||h.style,{width: cWidth(h.style,i)})"
           @click="$emit('clickTd', {ev:$event, td:i})"
           @textContentChange="contentChange($event, i)">
-      <span class="td-value"
+      <span v-if="h.alias" class="td-value"
             v-html="(h.formatter?h.formatter(item, h.alias):item[h.alias])||'—'"></span>
       <slot :name="'td-'+i"/>
     </item>

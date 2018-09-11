@@ -16,7 +16,7 @@
         @click="$emit('clickTr', {ev: $event, tr:i})">
       <td class="td" v-for="(h, j) in heads" :key="j" :style="h.tdStyle||h.style"
           @click="$emit('clickTd', {ev:$event, tr:i, td:j})">
-        <span class="td-value"
+        <span v-if="h.alias" class="td-value"
               v-html="(h.formatter?h.formatter(d, h.alias):d[h.alias])||'—'"></span>
         <slot :name="'td-'+i+'-'+j"/>
       </td>
@@ -56,7 +56,7 @@ export default {
       let valid = true
       if (this.heads) {
         valid = this.heads instanceof Array
-          && this.heads.every(head => (head.name && head.alias) || (head.slot))
+          && this.heads.every(head => head.alias || head.slot)
       }
       if (!valid) this.$emit('error', 'TableBase: prop heads is invalid')
       return valid

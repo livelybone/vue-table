@@ -58,12 +58,32 @@ const slotsName = [
 ### Common
 | Name                      | Type                                      | DefaultValue                                  | Description  |
 | ------------------------- | ----------------------------------------- | --------------------------------------------- | ------------ |
-| `heads`                   | `Array`                                   | `[]`                                          | Array of head option |
+| `heads`                   | `Array`                                   | `[]`                                          | Array of `head` option, see `head` |
 | `data`                    | `Array`                                   | `[]`                                          | Data list |
 | `headTrStyle`             | `Object`                                  | none                                          |  |
 | `trStyle`                 | `Object`                                  | none                                          |  |
 | `evenTrStyle`             | `Object`                                  | none                                          |  |
 | `noHead`                  | `Boolean`                                 | `false`                                       | Set to true to hide thead |
+
+```js
+/**
+ * @key {String} name
+ * @key {String} alias
+ * @key {Boolean} slot
+ * @key {Object} style
+ * @key {Object} tdStyle
+ * @key {Function} formatter
+ * @description one of key `alias` and `slot` has to be true
+ * */
+const head = {
+  name,
+  alias,
+  slot,
+  style,
+  tdStyle,
+  formatter,
+}
+```
 
 ### TableExtend
 | Name                      | Type                                      | DefaultValue                                  | Description  |
@@ -80,9 +100,9 @@ const slotsName = [
 ```js
 const clickData={
   ev: MouseEvent,
-  th: index,
-  tr: index,
-  td: index,
+  th, // index,
+  tr, // index,
+  td, // index,
 }
 ```
 

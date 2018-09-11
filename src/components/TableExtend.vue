@@ -77,7 +77,7 @@ export default {
       let valid = true
       if (this.heads) {
         valid = this.heads instanceof Array
-          && this.heads.every(head => (head.name && head.alias) || (head.slot))
+          && this.heads.every(head => head.alias || head.slot)
       }
       if (!valid) this.$emit('error', 'TableBase: prop heads is invalid')
       return valid
