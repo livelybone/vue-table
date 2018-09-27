@@ -30,7 +30,7 @@ Vue.component('VueTable', TableExtend);
 
 // Local register
 new Vue({
-  components:{VueTable,TableExtend}
+  components:{TableBase,TableExtend}
 })
 ```
 
