@@ -6,7 +6,6 @@
           @click="$emit('clickTh', {ev:$event, th:i})">
         {{h.name}}
         <slot :name="'th-'+i"/>
-        <span class="row-resize"></span>
       </th>
     </tr>
     </thead>
@@ -28,8 +27,6 @@
 <script>
 export default {
   name: 'TableBase',
-  beforeMount() {
-  },
   props: {
     heads: {
       default() {
@@ -48,9 +45,5 @@ export default {
     evenTrStyle: Object,
     noHead: Boolean,
   },
-  data() {
-    return {}
-  },
-  methods: {},
 }
 </script>
