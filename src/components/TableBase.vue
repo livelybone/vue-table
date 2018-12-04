@@ -16,7 +16,7 @@
       <td class="td" v-for="(h, j) in heads" :key="j" :style="h.tdStyle||h.style"
           @click="$emit('clickTd', {ev:$event, tr:i, td:j})">
         <div class="td-value"
-             v-html="(h.formatter?h.formatter(d, h.alias):d[h.alias])||'—'"></div>
+             v-html="(h.formatter?h.formatter(d, h.alias):d[h.alias])"></div>
         <slot :name="'td-'+i+'-'+j"/>
       </td>
     </tr>

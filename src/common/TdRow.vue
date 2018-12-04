@@ -5,7 +5,7 @@
           @click="$emit('clickTd', {ev:$event, td:i})"
           @textContentChange="contentChange($event, i)">
       <div class="td-value"
-           v-html="(h.formatter?h.formatter(item, h.alias):item[h.alias])||'—'"></div>
+           v-html="(h.formatter?h.formatter(item, h.alias):item[h.alias])"></div>
       <slot :name="'td-'+i"/>
     </item>
   </div>
