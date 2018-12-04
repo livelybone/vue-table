@@ -127,3 +127,5 @@ Or
 ```
 
 Or, you can build your custom style by copying and editing `index.scss`
+
+Especially, You can rewrite the style of TableExtend by `flex` layout

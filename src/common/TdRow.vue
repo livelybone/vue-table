@@ -1,11 +1,11 @@
 <template>
-  <div class="row" ref="row" v-on="$listeners" style="box-sizing: border-box;white-space: nowrap;">
+  <div class="row" ref="row" v-on="$listeners">
     <item class="td" v-for="(h, i) in heads" :key="i"
           :style="assign(h.tdStyle||h.style,{width: cWidth(h.style,i)})"
           @click="$emit('clickTd', {ev:$event, td:i})"
           @textContentChange="contentChange($event, i)">
-      <span v-if="h.alias" class="td-value"
-            v-html="(h.formatter?h.formatter(item, h.alias):item[h.alias])||'—'"></span>
+      <div v-if="h.alias" class="td-value"
+            v-html="(h.formatter?h.formatter(item, h.alias):item[h.alias])||'—'"></div>
       <slot :name="'td-'+i"/>
     </item>
   </div>

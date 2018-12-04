@@ -102,28 +102,28 @@ $font-size: size(1.4);
   }
 
   .tr {
+    white-space: nowrap;
     @include border-box;
-
-    * {
-      display: inline-block;
-    }
   }
 
   .th, .td {
-    @include border-box;
+    display: inline-block;
     position: relative;
     min-height: $thHeight;
     line-height: $thHeight;
+    vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    @include border-box;
 
     .column-resize {
       position: absolute;
       right: size(-.5);
       top: 50%;
       z-index: 1;
+      max-width: 100%;
       width: size(1);
       height: $thHeight;
       margin: -$thHeight/2 0 0;
@@ -135,12 +135,15 @@ $font-size: size(1.4);
     min-height: $tdHeight;
     line-height: $tdHeight;
 
-    * {
+    img {
       max-width: 100%;
     }
 
     .td-value {
+      display: inline-block;
+      max-width: 100%;
       min-height: $tdHeight;
+      vertical-align: middle;
     }
   }
 }

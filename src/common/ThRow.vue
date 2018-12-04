@@ -1,13 +1,12 @@
 <template>
-  <div class="row" ref="row" v-on="$listeners" style="box-sizing: border-box;white-space: nowrap;"
-       :draggable="false">
+  <div class="row" ref="row" v-on="$listeners" :draggable="false">
     <item class="th" v-for="(h, i) in heads" :key="i"
           :style="assign(h.style,{width: cWidth(h.style,i)})"
           @click="$emit('clickTh', {ev:$event, th:i})"
           @textContentChange="contentChange($event, i)">
       {{h.name}}
       <slot :name="'th-'+i"/>
-      <span class="column-resize" :draggable="false" @mousedown="down($event, i)"></span>
+      <div class="column-resize" :draggable="false" @mousedown="down($event, i)"></div>
     </item>
   </div>
 </template>
@@ -18,14 +17,6 @@ import RowMixin from './RowMixin'
 export default {
   name: 'Row',
   mixins: [RowMixin],
-  mounted() {
-    window.addEventListener('mousemove', this.resize)
-    window.addEventListener('mouseup', this.clear)
-  },
-  beforeDestroy() {
-    window.removeEventListener('mousemove', this.resize)
-    window.removeEventListener('mouseup', this.clear)
-  },
   data() {
     return {
       start: null,
@@ -45,6 +36,14 @@ export default {
         this.start.x = ev.pageX
       }
     },
+  },
+  mounted() {
+    window.addEventListener('mousemove', this.resize)
+    window.addEventListener('mouseup', this.clear)
+  },
+  beforeDestroy() {
+    window.removeEventListener('mousemove', this.resize)
+    window.removeEventListener('mouseup', this.clear)
   },
 }
 </script>

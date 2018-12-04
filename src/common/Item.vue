@@ -1,6 +1,5 @@
 <template>
-  <div v-on="$listeners" ref="item"
-       style="box-sizing: border-box;display:inline-block;vertical-align: middle;">
+  <div v-on="$listeners" ref="item">
     <slot/>
   </div>
 </template>

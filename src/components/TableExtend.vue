@@ -30,16 +30,7 @@ import { assign } from '../common/utils'
 
 export default {
   name: 'TableBase',
-  mounted() {
-    this.sizeChange()
-    window.addEventListener('resize', this.sizeChange)
-  },
-  updated() {
-    this.sizeChange()
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.sizeChange)
-  },
+  components: { VueScrollbar, TdRow, ThRow },
   props: {
     heads: {
       default() {
@@ -118,6 +109,15 @@ export default {
       }
     },
   },
-  components: { VueScrollbar, TdRow, ThRow },
+  mounted() {
+    this.sizeChange()
+    window.addEventListener('resize', this.sizeChange)
+  },
+  updated() {
+    this.sizeChange()
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.sizeChange)
+  },
 }
 </script>
