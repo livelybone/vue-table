@@ -76,7 +76,7 @@ const slotsName = [
  * @key {Object} style
  * @key {Object} tdStyle
  * @key {Function} formatter
- * @description one of key `alias` and `slot` has to be true
+ * @key {Function} headFormatter
  * */
 const head = {
   name,
@@ -84,6 +84,7 @@ const head = {
   style,
   tdStyle,
   formatter,
+  headFormatter,
 }
 ```
 

@@ -4,7 +4,7 @@
     <tr class="tr" :style="headTrStyle">
       <th class="th" v-for="(h, i) in heads" :key="i" :style="h.style"
           @click="$emit('clickTh', {ev:$event, th:i})">
-        {{h.name}}
+        {{h.headformatter?h.headFormatter(h.name):h.name}}
         <slot :name="'th-'+i"/>
       </th>
     </tr>

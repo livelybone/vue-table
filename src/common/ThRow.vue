@@ -4,7 +4,7 @@
           :style="assign(h.style,{width: cWidth(h.style,i)})"
           @click="$emit('clickTh', {ev:$event, th:i})"
           @textContentChange="contentChange($event, i)">
-      {{h.name}}
+      {{h.headformatter?h.headFormatter(h.name):h.name}}
       <slot :name="'th-'+i"/>
       <div class="column-resize" :draggable="false" @mousedown="down($event, i)"></div>
     </item>
