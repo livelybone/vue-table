@@ -15,8 +15,8 @@
         @click="$emit('clickTr', {ev: $event, tr:i})">
       <td class="td" v-for="(h, j) in heads" :key="j" :style="h.tdStyle||h.style"
           @click="$emit('clickTd', {ev:$event, tr:i, td:j})">
-        <span v-if="h.alias" class="td-value"
-              v-html="(h.formatter?h.formatter(d, h.alias):d[h.alias])||'—'"></span>
+        <div class="td-value"
+             v-html="(h.formatter?h.formatter(d, h.alias):d[h.alias])||'—'"></div>
         <slot :name="'td-'+i+'-'+j"/>
       </td>
     </tr>

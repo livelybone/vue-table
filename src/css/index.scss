@@ -65,6 +65,13 @@ $font-size: size(1.4);
 
       .td {
         color: $tdColor;
+
+        .td-value {
+          display: inline-block;
+          max-width: 100%;
+          min-height: $tdHeight;
+          vertical-align: middle;
+        }
       }
     }
   }
