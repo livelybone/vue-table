@@ -9,9 +9,6 @@ import { getSlotText } from './utils'
 
 export default {
   name: 'Item',
-  props: {
-    log: Boolean,
-  },
   mounted() {
     this.textChange(getSlotText(this.$slots.default))
   },
