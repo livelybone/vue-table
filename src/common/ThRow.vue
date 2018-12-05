@@ -1,12 +1,20 @@
 <template>
-  <div class="row" ref="row" v-on="$listeners" :draggable="false">
-    <item class="th" v-for="(h, i) in heads" :key="i"
-          :style="assign(h.style,{width: cWidth(h.style,i)})"
+  <div class="row"
+       ref="row"
+       v-on="$listeners"
+       :draggable="false">
+    <item class="th"
+          v-for="(h, i) in heads"
+          :key="i"
+          :style="assign(h.style,{width: cWidth(i)})"
           @click="$emit('clickTh', {ev:$event, th:i})"
-          @textContentChange="contentChange($event, i)">
+          @contentWidthChange="contentChange($event, i)">
       {{h.headformatter?h.headFormatter(h.name):h.name}}
       <slot :name="'th-'+i"/>
-      <div class="column-resize" :draggable="false" @mousedown="down($event, i)"></div>
+      <div class="column-resize"
+           :draggable="false"
+           @mousedown="down($event, i)"
+           @click.stop=""></div>
     </item>
   </div>
 </template>

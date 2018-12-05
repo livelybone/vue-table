@@ -34,7 +34,7 @@ new Vue({
             return item[alias] + ' - x'
           },
         },
-        { name: '年龄', alias: 'age', style: { width: isMobile ? '200px' : '1000px' } },
+        { name: '年龄', alias: 'age', width: isMobile ? 200 : 1000 },
         { name: '性别', alias: 'sex' },
       ],
       data: [
@@ -73,7 +73,7 @@ new Vue({
       console.log(val)
     },
   },
-  components: { 'vue-table': VueTable.TableBase },
+  components: { 'vue-table': VueTable.TableExtend },
 })
 </script>
 </body>

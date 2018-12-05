@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/vue-table",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "A vue table component, support width change",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
@@ -68,6 +68,7 @@
     "webpack-command": "^0.2.1"
   },
   "dependencies": {
+    "@livelybone/scroll-get": "^2.1.0",
     "vue-scrollbar-live": "^4.5.1"
   }
 }

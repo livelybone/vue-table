@@ -8,19 +8,21 @@ export default {
   },
   data() {
     return {
-      textContents: [],
+      contentWidths: [],
     }
   },
   methods: {
     contentChange(val, index) {
-      this.$set(this.textContents, index, val)
-      if (this.heads.every((h, i) => this.textContents[i] !== undefined)) {
-        this.$emit('textContentChange', this.textContents)
+      this.$set(this.contentWidths, index, val)
+      if (this.heads.every((h, i) => this.contentWidths[i] !== undefined)) {
+        this.$emit('contentWidthChange', this.contentWidths)
       }
     },
     assign,
-    cWidth(style = {}, i) {
-      return (typeof this.widths[i] === 'number' ? `${this.widths[i]}px` : this.widths[i]) || style.width
+    cWidth(i) {
+      const width = this.widths[i]
+      if (!width) return 'auto'
+      return (typeof width === 'number' ? `${width}px` : width)
     },
   },
   components: { Item },

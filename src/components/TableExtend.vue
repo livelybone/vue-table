@@ -1,22 +1,38 @@
 <template>
-  <div class="vue-table table-extend" ref="table"
+  <div class="vue-table table-extend"
+       ref="table"
        :style="{width:tableChangedWidth?tableChangedWidth+'px':''}">
-    <div class="thead" v-if="!noHead">
-      <th-row class="tr" :style="headTrStyle" :widths="widths" :heads="heads"
-              @clickTh="$emit('clickTh', $event)" @widthChange="widthChange"
-              @textContentChange="textChange($event, 0)">
-        <slot v-for="(h,i) in heads" :name="'th-'+i" :slot="'th-'+i"/>
+    <div class="thead"
+         v-if="!noHead">
+      <th-row class="tr"
+              :style="headTrStyle"
+              :widths="widths"
+              :heads="heads"
+              @clickTh="$emit('clickTh', $event)"
+              @widthChange="widthChange"
+              @contentWidthChange="contentWidthChange($event, 0)">
+        <slot v-for="(h,i) in heads"
+              :name="'th-'+i"
+              :slot="'th-'+i"/>
       </th-row>
     </div>
-    <vue-scrollbar class="tbody" v-if="data&&data.length>0" :isMobile="scrollbarProps.isMobile"
+    <vue-scrollbar class="tbody"
+                   v-if="data&&data.length>0"
+                   :isMobile="scrollbarProps.isMobile"
                    :maxHeight="scrollbarProps.maxHeight||'1000vh'">
-      <td-row class="tr" v-for="(d, i) in data" :key="i"
-              :heads="heads" :item="d" :widths="widths"
+      <td-row class="tr"
+              v-for="(d, i) in data"
+              :key="i"
+              :heads="heads"
+              :item="d"
+              :widths="widths"
               :style="assign(trStyle, i%2===1?evenTrStyle:{})"
               @click="$emit('clickTr', {ev:$event, tr:i})"
               @clickTd="$emit('clickTd', assign($event, {tr:i}))"
-              @textContentChange="textChange($event, i+1)">
-        <slot v-for="(h,j) in heads" :name="'td-'+i+'-'+j" :slot="'td-'+j"/>
+              @contentWidthChange="contentWidthChange($event, i+1)">
+        <slot v-for="(h,j) in heads"
+              :name="'td-'+i+'-'+j"
+              :slot="'td-'+j"/>
       </td-row>
     </vue-scrollbar>
   </div>
@@ -58,38 +74,37 @@ export default {
   data() {
     return {
       tableSize: {},
-      textContents: [],
+      contentWidths: [],
       tableChangedWidth: 0,
       fixedWidth: [],
     }
   },
   computed: {
     widths() {
-      if (this.textContentsInvalid()) return []
+      if (this.contentWidthsInvalid()) return []
       const { clientWidth } = this.tableSize
-      const maxTexts = this.heads.map((head, i) => (this.textContents[i] instanceof Array
-        ? Math.max(...this.textContents.map(c => c[i].text.length), 4) : 4))
-      const total = maxTexts.reduce((pre, len, i) => (this.fixedWidth[i] ? pre : pre + len), 0)
+      const maxWidths = this.heads
+        .map((head, i) => Math.max(...this.contentWidths.map(c => c[i]), 0))
+      const total = maxWidths.reduce((pre, len, i) => (this.fixedWidth[i] ? pre : pre + len), 0)
 
       const availableWidth = clientWidth - this.fixedWidth.reduce((pre, width) => pre + width, 0)
-      return maxTexts.map((len, i) => this.fixedWidth[i] || len / total * availableWidth)
+      return maxWidths.map((len, i) => this.fixedWidth[i] || len / total * availableWidth)
     },
   },
   watch: {
-    textContents() {
-      if (!this.textContentsInvalid()) {
-        this.fixedWidth = this.heads.map((h, i) => {
-          const hWidth = parseInt((h.style && h.style.width) || (h.tdStyle && h.tdStyle.width), 10)
-          return hWidth || this.fixedWidth[i]
-            ? this.fixedWidth[i] || this.textContents[0][i].width : 0
-        })
-      }
+    heads: {
+      handler() {
+        this.initFixedWidth()
+      },
+      immediate: true,
     },
   },
   methods: {
-    textContentsInvalid() {
-      return this.textContents.length <= 0
-        && [1, this.data].some((d, i) => !this.textContents[i + 1])
+    initFixedWidth() {
+      if (this.heads) this.fixedWidth = this.heads.map((h, i) => this.fixedWidth[i] || h.width || 0)
+    },
+    contentWidthsInvalid() {
+      return [1, ...(this.data || [])].some((d, i) => !this.contentWidths[i])
     },
     sizeChange() {
       const { clientHeight = 0, clientWidth = 0 } = this.$refs.table || {}
@@ -97,8 +112,8 @@ export default {
       this.$set(this.tableSize, 'clientWidth', clientWidth)
     },
     assign,
-    textChange(val, index) {
-      this.$set(this.textContents, index, val)
+    contentWidthChange(val, index) {
+      this.$set(this.contentWidths, index, val)
     },
     widthChange({ value, index }) {
       const val = this.widths[index] + value

@@ -28,7 +28,7 @@ const conf = entry => Object.assign({}, baseConf, {
     format,
     name: entry.name === 'index' ? 'VueTable' : entry.name,
   })),
-  external: entry.external ? ['vue-scrollbar-live'] : [],
+  external: entry.external ? ['vue-scrollbar-live', '@livelybone/scroll-get'] : [],
   plugins: baseConf.plugins.concat([(entry.needUglify !== false && uglify())]),
 })
 

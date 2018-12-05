@@ -49,6 +49,7 @@ $font-size: size(1.4);
       min-height: $thHeight;
 
       .th {
+        height: 100%;
         color: $thColor;
       }
     }
@@ -64,12 +65,12 @@ $font-size: size(1.4);
       }
 
       .td {
+        height: 100%;
         color: $tdColor;
 
         .td-value {
           display: inline-block;
           max-width: 100%;
-          min-height: $tdHeight;
           vertical-align: middle;
         }
       }

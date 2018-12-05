@@ -73,14 +73,16 @@ const slotsName = [
 /**
  * @key {String} name
  * @key {String} alias
- * @key {Object} style
- * @key {Object} tdStyle
+ * @key {Number} width, init width of td, only works in TableExtend component
+ * @key {Object} style, init style of th or td, width property do not works in TableExtend component
+ * @key {Object} tdStyle, init style of td, width property do not works in TableExtend component, priority than `style`
  * @key {Function} formatter
  * @key {Function} headFormatter
  * */
 const head = {
   name,
   alias,
+  width,
   style,
   tdStyle,
   formatter,

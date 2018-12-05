@@ -5,26 +5,26 @@
 </template>
 
 <script>
-import { getSlotText } from './utils'
+import { getRect } from '@livelybone/scroll-get'
 
 export default {
   name: 'Item',
   mounted() {
-    this.textChange(getSlotText(this.$slots.default))
+    this.widthChange(getRect(this.$refs.item))
   },
   updated() {
-    this.textChange(getSlotText(this.$slots.default))
+    this.widthChange(getRect(this.$refs.item))
   },
   data() {
     return {
-      oldText: '',
+      oldWidth: -1,
     }
   },
   methods: {
-    textChange(text) {
-      if (text !== this.oldText) {
-        this.oldText = text
-        this.$emit('textContentChange', { text, width: this.$refs.item.offsetWidth })
+    widthChange({ width }) {
+      if (width !== this.oldWidth) {
+        this.oldWidth = width
+        this.$emit('contentWidthChange', width)
       }
     },
   },
