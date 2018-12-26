@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/vue-table",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "A vue table component, support width change",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/livelybone/vue-table/issues"
   },
-  "homepage": "https://github.com/livelybone/vue-table#readme",
+  "homepage": "https://livelybone.github.io/vue/vue-table/",
   "devDependencies": {
     "@livelybone/scroll-get": "^3.2.0",
     "@vue/test-utils": "^1.0.0-beta.19",
