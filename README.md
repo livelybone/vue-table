@@ -11,7 +11,7 @@ A vue table component, support width change
 https://github.com/livelybone/vue-table.git
 
 ## Demo
-https://livelybone.github.io/vue/vue-table
+https://livelybone.github.io/vue/vue-table/
 
 ## Installation
 ```bash
