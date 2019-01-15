@@ -5,7 +5,9 @@
 </template>
 
 <script>
-import { getRect } from '@livelybone/scroll-get'
+import * as ScrollGet from '@livelybone/scroll-get'
+
+const { getRect } = ScrollGet
 
 export default {
   name: 'Item',
