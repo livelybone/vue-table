@@ -13,6 +13,7 @@
     "build": "rimraf ./lib && npm run build:css && rollup -c",
     "eslint": "eslint ./src/index.vue",
     "test": "cross-env BABEL_ENV=test karma start --single-run",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "commit": "npx git-cz"
   },
   "repository": {
@@ -42,6 +43,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
     "commitizen": "^3.0.7",
+    "conventional-changelog-cli": "^2.0.12",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
