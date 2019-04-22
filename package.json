@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/vue-table",
-  "version": "1.8.0",
+  "version": "2.0.0",
   "description": "A vue table component, support width change",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
@@ -24,7 +24,7 @@
     "vue",
     "table",
     "width change",
-    "height change"
+    "scroll"
   ],
   "author": "livelybone(2631541504@qq.com)",
   "license": "MIT",

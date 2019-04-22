@@ -5,7 +5,9 @@
 
 > `pkg.module supported`, which means that you can apply tree-shaking in you project
 
-A vue table component, support width change
+A vue table component, support width change.
+
+Prop `heads` has changed since 2.0.0. Install v1.8.0 if you want use the old config of `heads` 
 
 ## repository
 https://github.com/livelybone/vue-table.git
@@ -71,8 +73,8 @@ const slotsName = [
 
 ```js
 /**
+ * @key {String} label
  * @key {String} name
- * @key {String} alias
  * @key {Number} width, init width of td, only works in TableExtend component
  * @key {Object} style, init style of th or td, width property do not works in TableExtend component
  * @key {Object} tdStyle, init style of td, width property do not works in TableExtend component, priority than `style`
@@ -80,8 +82,8 @@ const slotsName = [
  * @key {Function} headFormatter
  * */
 const head = {
+  label,
   name,
-  alias,
   width,
   style,
   tdStyle,

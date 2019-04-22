@@ -1,38 +1,47 @@
 <template>
   <div class="vue-table table-extend"
        ref="table"
-       :style="{width:tableChangedWidth?tableChangedWidth+'px':''}">
-    <div class="thead"
-         v-if="!noHead">
-      <th-row class="tr"
-              :style="headTrStyle"
-              :widths="widths"
-              :heads="heads"
-              @clickTh="$emit('clickTh', $event)"
-              @widthChange="widthChange"
-              @contentWidthChange="contentWidthChange($event, 0)">
-        <slot v-for="(h,i) in heads"
-              :name="'th-'+i"
-              :slot="'th-'+i"/>
+       :style="{width: tableChangedWidth ? tableChangedWidth + 'px' : '' }">
+    <div class="thead" v-if="!noHead">
+      <th-row
+        class="tr"
+        :style="headTrStyle"
+        :widths="widths"
+        :heads="heads"
+        @clickTh="$emit('clickTh', $event)"
+        @widthChange="widthChange"
+        @contentWidthChange="contentWidthChange($event, 0)"
+      >
+        <slot
+          v-for="(h, i) in heads"
+          :name="'th-'+i"
+          :slot="'th-'+i"
+        />
       </th-row>
     </div>
-    <vue-scrollbar class="tbody"
-                   v-if="data&&data.length>0"
-                   :isMobile="scrollbarProps.isMobile"
-                   :maxHeight="scrollbarProps.maxHeight||'1000vh'">
-      <td-row class="tr"
-              v-for="(d, i) in data"
-              :key="i"
-              :heads="heads"
-              :item="d"
-              :widths="widths"
-              :style="assign(trStyle, i%2===1?evenTrStyle:{})"
-              @click="$emit('clickTr', {ev:$event, tr:i})"
-              @clickTd="$emit('clickTd', assign($event, {tr:i}))"
-              @contentWidthChange="contentWidthChange($event, i+1)">
-        <slot v-for="(h,j) in heads"
-              :name="'td-'+i+'-'+j"
-              :slot="'td-'+j"/>
+    <vue-scrollbar
+      class="tbody"
+      v-if="data && data.length > 0"
+      :isMobile="scrollbarProps.isMobile"
+      :maxHeight="scrollbarProps.maxHeight || '1000vh'"
+    >
+      <td-row
+        class="tr"
+        v-for="(d, i) in data"
+        :key="i"
+        :heads="heads"
+        :item="d"
+        :widths="widths"
+        :style="assign(trStyle, i % 2 === 1 ? evenTrStyle : {})"
+        @click="$emit('clickTr', { ev: $event, tr: i })"
+        @clickTd="$emit('clickTd', assign($event, { tr: i }))"
+        @contentWidthChange="contentWidthChange($event, i + 1)"
+      >
+        <slot
+          v-for="(h,j) in heads"
+          :name="'td-'+i+'-'+j"
+          :slot="'td-'+j"
+        />
       </td-row>
     </vue-scrollbar>
   </div>
