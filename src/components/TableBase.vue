@@ -9,7 +9,7 @@
         :style="h.style"
         @click="$emit('clickTh', { ev: $event, th: i })"
       >
-        {{ h.headformatter ? h.headFormatter(h.label) : h.label }}
+        {{ h.headformatter ? h.headFormatter(h.title) : h.title }}
         <slot :name="'th-'+i"/>
       </th>
     </tr>
@@ -34,7 +34,7 @@
       >
         <div
           class="td-value"
-          v-html="h.formatter ? h.formatter(d, h.name) : d[h.name]"
+          v-html="h.formatter ? h.formatter(d, h.key) : d[h.key]"
         ></div>
         <slot :name="'td-'+i+'-'+j"/>
       </td>

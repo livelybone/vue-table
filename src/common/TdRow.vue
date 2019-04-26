@@ -14,7 +14,7 @@
     >
       <div
         class="td-value"
-        v-html="h.formatter ? h.formatter(item, h.name) : item[h.name]"
+        v-html="h.formatter ? h.formatter(item, h.key) : item[h.key]"
       ></div>
       <slot :name="'td-'+i"/>
     </item>

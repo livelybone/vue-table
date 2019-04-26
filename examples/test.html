@@ -26,16 +26,16 @@ new Vue({
       isMobile: isMobile,
       heads: [
         {
-          label: '姓名',
-          name: 'name',
+          title: '姓名',
+          key: 'name',
           style: { textAlign: 'left' },
           tdStyle: { textAlign: 'right' },
           formatter: function (item, name) {
             return item[name] + ' - x'
           },
         },
-        { label: '年龄', name: 'age', width: isMobile ? 200 : 1000 },
-        { label: '性别', name: 'sex' },
+        { title: '年龄', key: 'age', width: isMobile ? 200 : 1000 },
+        { title: '性别', key: 'sex' },
       ],
       data: [
         { name: 'lzp', age: '24', sex: 'male' },

@@ -13,7 +13,7 @@
       @click="$emit('clickTh', { ev: $event, th: i })"
       @contentWidthChange="contentChange($event, i)"
     >
-      {{ h.headformatter ? h.headFormatter(h.label) : h.label }}
+      {{ h.headformatter ? h.headFormatter(h.title) : h.title }}
       <slot :name="'th-'+i"/>
       <div
         class="column-resize"

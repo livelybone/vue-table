@@ -12,6 +12,13 @@ $baseSize: 10px;
   box-sizing: border-box;
 }
 
+@mixin user-select($val: none) {
+  -webkit-user-select: $val;
+  -moz-user-select: $val;
+  -ms-user-select: $val;
+  user-select: $val;
+}
+
 @function size($val) {
   @return $val * $baseSize;
 }
@@ -110,27 +117,23 @@ $font-size: size(1.4);
   }
 
   .tr {
-    white-space: nowrap;
     @include border-box;
+    white-space: nowrap;
   }
 
   .th, .td {
+    @include user-select(none);
+    @include border-box;
     display: inline-block;
     position: relative;
     min-height: $thHeight;
     line-height: $thHeight;
     vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    @include border-box;
 
     .column-resize {
       position: absolute;
       right: size(-.5);
       top: 50%;
-      z-index: 1;
       max-width: 100%;
       width: size(1);
       height: $thHeight;

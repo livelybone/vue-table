@@ -1,5 +1,5 @@
 # @livelybone/vue-table
-![gzip with dependencies: 5.7kb](https://img.shields.io/badge/gzip--with--dependencies-5.7kb-brightgreen.svg "gzip with dependencies: 5.7kb")
+![gzip with dependencies: 5.4kb](https://img.shields.io/badge/gzip--with--dependencies-5.4kb-brightgreen.svg "gzip with dependencies: 5.4kb")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
 ![mobile supported](https://img.shields.io/badge/mobile-supported-green.svg "mobile supported")
 
@@ -73,17 +73,17 @@ const slotsName = [
 
 ```js
 /**
- * @key {String} label
- * @key {String} name
- * @key {Number} width, init width of td, only works in TableExtend component
- * @key {Object} style, init style of th or td, width property do not works in TableExtend component
- * @key {Object} tdStyle, init style of td, width property do not works in TableExtend component, priority than `style`
- * @key {Function} formatter
- * @key {Function} headFormatter
+ * @key { String } title
+ * @key { String } key
+ * @key { Number } width, init width of td, only works in TableExtend component
+ * @key { Object } style, init style of th or td, width property do not works in TableExtend component
+ * @key { Object } tdStyle, init style of td, width property do not works in TableExtend component, priority than `style`
+ * @key { Function } formatter
+ * @key { Function } headFormatter
  * */
 const head = {
-  label,
-  name,
+  title,
+  key,
   width,
   style,
   tdStyle,
