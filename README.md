@@ -46,17 +46,29 @@ Use in html, see what your can use in [CDN: unpkg](https://unpkg.com/@livelybone
 See: [example](https://github.com/livelybone/vue-table/blob/master/examples/test.html)
 
 ## Slots
-```js
-const slotsName = [
-  'th-0', 
-  'th-1', 
-  'th-2', 
-  // ... 'th-{{thIndex}}'
-  'td-0-0', 
-  'td-0-1', 
-  'td-0-2',     
-  // ... 'td-{{trIndex}}-{{tdIndex}}'
-]
+
+> th slot, slotName: `th-{{headKey}}`
+
+> td slot, slotName: `td-{{dataKey}}-{{headKey}}`
+
+// The source code just like：
+```vue
+<template>
+  <table>
+    <tr>
+      <th v-for="(h, headKey) in heads">
+        ...
+        <slot :name="'th-' + headKey"></slot>
+      </th>
+    </tr>
+    <tr v-for="(d, dataKey) in data">
+      <td v-for="(h, headKey) in heads">
+        ...
+        <slot :name="'th-' + dataKey + '-' +headKey"></slot>
+      </td>  
+    </tr>
+  </table>
+</template>
 ```
 
 ## Props
@@ -64,8 +76,8 @@ const slotsName = [
 ### Common
 | Name                      | Type                                      | DefaultValue                                  | Description  |
 | ------------------------- | ----------------------------------------- | --------------------------------------------- | ------------ |
-| `heads`                   | `Array`                                   | `[]`                                          | Array of `head` option, see `head` |
-| `data`                    | `Array`                                   | `[]`                                          | Data list |
+| `heads`                   | `[Array, Object]`                         | `[]`                                          | List of `head`, see `head` |
+| `data`                    | `[Array, Object]`                         | `[]`                                          | List of data |
 | `headTrStyle`             | `Object`                                  | none                                          |  |
 | `trStyle`                 | `Object`                                  | none                                          |  |
 | `evenTrStyle`             | `Object`                                  | none                                          |  |

@@ -51,13 +51,13 @@ export default {
       default() {
         return []
       },
-      type: Array,
+      type: [Array, Object],
     },
     data: {
       default() {
         return []
       },
-      type: Array,
+      type: [Array, Object],
     },
     headTrStyle: Object,
     trStyle: Object,
