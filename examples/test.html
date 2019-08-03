@@ -3,23 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VueSelect</title>
+  <title>VueTable</title>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="../lib/umd/index.js"></script>
   <link rel="stylesheet" href="../lib/css/index.css">
+  <script>
+  console.log(VueTable)
+  </script>
 </head>
-<body>
+<body style="background: #333">
 <div id="module"></div>
 
 <script>
+console.log(VueTable)
+var isMobile = /Android|webOS|iPhone|iPod|iPad|BlackBerry|Windows Phone/i.test(navigator.userAgent)
+
 new Vue({
   el: '#module',
-  template: '',
-  data: function () {
-    return {}
+  template: '<vue-table :heads="heads" :data="data" :headTrStyle="headTrStyle" :trStyle="trStyle" :evenTrStyle="evenTrStyle" @clickTr="log" @clickTd="log" @clickTh="log" :scrollbarProps="{isMobile:isMobile, maxHeight:\'50vh\'}"></vue-table>',
+  data: function() {
+    return {
+      isMobile: isMobile,
+      heads: [
+        {
+          title: '姓名',
+          key: 'name',
+          style: { textAlign: 'left' },
+          tdStyle: { textAlign: 'right' },
+          formatter: function(item, name) {
+            return item[name] + ' - x'
+          },
+        },
+        { title: '年龄', key: 'age', width: isMobile ? 200 : 1000 },
+        { title: '性别', key: 'sex' },
+      ],
+      data: [
+        { name: 'lzp', age: '24', sex: 'male' },
+        { name: 'thy', age: '<img src="./home.png">', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+        { name: 'thy', age: '24', sex: 'female' },
+      ],
+      headTrStyle: { background: '#f1f2f3' },
+      trStyle: { background: '#fefefe' },
+      evenTrStyle: { background: '#fafafa' },
+    }
   },
-  methods: {},
-  components: {}
+  methods: {
+    log: function(val) {
+      console.log(val)
+    },
+  },
+  components: { 'vue-table': VueTable.TableExtend },
 })
 </script>
 </body>

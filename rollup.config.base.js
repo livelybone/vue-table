@@ -29,6 +29,10 @@ module.exports = {
           },
         ],
       ],
+      plugins:
+        process.env.NODE_ENV === 'test'
+          ? ['@babel/plugin-transform-runtime', 'istanbul']
+          : [],
     }),
   ],
 }

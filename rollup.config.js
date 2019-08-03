@@ -39,7 +39,7 @@ const conf = entry => ({
   output: entry.formats.map(format => ({
     file: `./lib/${format}/${entry.name}.js`,
     format,
-    name: entry.name === 'index' ? 'VueSelect' : `${entry.name}VueSelect`,
+    name: entry.name === 'index' ? 'VueTable' : `${entry.name}VueTable`,
   })),
   external: entry.external ? Object.keys(packageConf.dependencies || {}) : [],
   plugins: [

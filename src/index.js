@@ -1,3 +1,4 @@
-import VueSelect from './components/Index.vue'
+import TableBase from './components/TableBase.vue'
+import TableExtend from './components/TableExtend.vue'
 
-export default VueSelect
+export { TableBase, TableExtend }
