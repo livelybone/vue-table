@@ -8,6 +8,7 @@ export function assign(...args) {
 export function parseSize(value) {
   const percent = /^((\d+\.)?\d+)%$/
   const arr = value.match(percent)
+
   if (arr) return { value: +arr[1], type: 'percent' }
   return { value, type: 'normal' }
 }
